@@ -18,20 +18,22 @@ class TestLogin(LiveServerTestCase):
 
     def test_login(self):
         # ログインページを開く
-        self.selenium.get('http://localhost:8000' + str(reverse_lazy('account_login')))
+        self.selenium.get("http://localhost:8000" + str(reverse_lazy("account_login")))
 
         # メールアドレス欄の入力
         username_input = self.selenium.find_element(By.NAME, "login")
-        username_input.send_keys('masuda.so.23@gmail.com')
+        username_input.send_keys("masuda.so.23@gmail.com")
         # パスワード欄の入力
         password_input = self.selenium.find_element(By.NAME, "password")
-        password_input.send_keys('Shiki923')
+        password_input.send_keys("Shiki923")
         # ログインボタンのクリック
-        button = self.selenium.find_element(By.XPATH, '//*[@id="wrapper"]/div/div/div/form/button')
+        button = self.selenium.find_element(
+            By.XPATH, '//*[@id="wrapper"]/div/div/div/form/button'
+        )
         button.click()
 
         # 指定秒数待機(ページ遷移のため)
         time.sleep(3)
 
         # ページタイトルの検証
-        self.assertEqual('日記一覧 | Private Diary', self.selenium.title)
+        self.assertEqual("日記一覧 | Private Diary", self.selenium.title)
