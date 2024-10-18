@@ -22,7 +22,8 @@ from django.urls import path, include
 from . import settings_common, settings_dev
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    # path("admin/", admin.site.urls), # 管理サイトの旧URLはコメントアウト
+    path("control/", admin.site.urls),  # 管理サイトの新URLを登録
     path("", include("diary.urls")),
     path("accounts/", include("allauth.urls")),
 ]
